@@ -541,6 +541,7 @@ class ComposerStaticInitd76bbe5879cdd6514121ff2c09b6e4fd
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\API\\ActividadController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/ActividadController.php',
+        'App\\Http\\Controllers\\API\\ActividadesClienteController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/ActividadesClienteController.php',
         'App\\Http\\Controllers\\API\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/API/Controller.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',

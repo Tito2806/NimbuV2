@@ -65,9 +65,5 @@
 	<main class="my-5 py-5">
 		@yield('content')
 	</main>
-  
-
-    <script src="{{asset('/resources/js/cliente.js')}}"></script>
-
 </body>
 </html>

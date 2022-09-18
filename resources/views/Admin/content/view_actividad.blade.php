@@ -1,38 +1,36 @@
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <div class="container">
         <div class="card">
-            @if(Auth::check() && Auth::user()->rol == "Administrador")
-            
-            <div class="card-header">
-                <h2>Tabla Actividad</h2>
-                <!--boton que llama al modal de crear usuario-->
-                <div class="d-flex flex-row-reverse"><button
-                        class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewActividad"><i
-                            class="fas fa-plus"></i>Agregar Actividad</button></div>
-            </div>
-            <div class="card-body">
-                <div class="col-md-12">
-                    <div class="table-responsive">
-                        <table class="table" id="tableActividades">
-                            <thead class="font-weight-bold text-center">
-                                <tr>
-                                    {{-- <th>No.</th> --}}
-                                    <th>Titulo</th>
-                                    <th>Descripcion</th>
-                                    <th>Lugar</th>
-                                    <th>Fecha</th>
-                                    <th>Hora</th>
-                                    <th>Imagen</th>
-                                    <th>Acción</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-center">
-
-                            </tbody>
-                        </table>
+            @if (Auth::check() && Auth::user()->rol == 'Administrador')
+                <div class="card-header">
+                    <h2>Tabla Actividad</h2>
+                    <!--boton que llama al modal de crear usuario-->
+                    <div class="d-flex flex-row-reverse"><button
+                            class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewActividad"><i
+                                class="fas fa-plus"></i>Agregar Actividad</button></div>
+                </div>
+                <div class="card-body">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table" id="tableActividades">
+                                <thead class="font-weight-bold text-center">
+                                    <tr>
+                                        {{-- <th>No.</th> --}}
+                                        <th>Titulo</th>
+                                        <th>Descripcion</th>
+                                        <th>Lugar</th>
+                                        <th>Fecha</th>
+                                        <th>Hora</th>
+                                        <th>Imagen</th>
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endif
         </div>
     </div>
@@ -60,13 +58,13 @@
                         </textarea>
                         <br>
                         <input type="text" name="lugar" class="form-control" id="lugar"
-                        placeholder="Lugar de la actividad">
+                            placeholder="Lugar de la actividad">
                         <br>
                         <input type="date" name="fecha" class="form-control" id="fecha"
-                        placeholder="Fecha de la actividad">
+                            placeholder="Fecha de la actividad">
                         <br>
                         <input type="time" name="hora" class="form-control" id="hora"
-                        placeholder="Hora de la actividad">
+                            placeholder="Hora de la actividad">
                         <br>
                         </select><br>
                         <input id="browse" type="file" onchange="previewFiles()" multiple>
@@ -86,7 +84,8 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
 @push('scripts')
     <script>
@@ -108,7 +107,7 @@
                         document.getElementById("imagen").value = image.src;
                         preview.appendChild(image);
                     }, false);
-                    reader.readAsDataURL(file); 
+                    reader.readAsDataURL(file);
                 }
             }
             if (files) {
@@ -166,7 +165,10 @@
                     },
                     {
                         data: 'imagen',
-                        name: 'imagen'
+                        name: 'imagen',
+                        "render": function(data) {
+                            return '<img src="../../../../images/actividades/'+data+'" width="70px">';
+                        }
                     },
                     {
                         data: 'action',
@@ -174,9 +176,8 @@
                         orderable: false,
                         searchable: false
                     },
-                ]
+                ]   
             });
-
             // csrf token
             $.ajaxSetup({
                 headers: {
@@ -195,9 +196,9 @@
             // initialize btn edit
             $('body').on('click', '.editActividades', function() {
 
-                $( "#preview" ).append("<img id='imagenActividad'></img>");       
+                $("#preview").append("<img id='imagenActividad'></img>");
 
-                $( "#preview img" ).remove();
+                $("#preview img").remove();
                 var id_actividad = $(this).data('id');
                 $.get("{{ route('actividades.index') }}" + '/' + id_actividad + '/edit', function(data) {
                     $('#saveBtn').val("Editar Actividad");
@@ -270,4 +271,4 @@
 
         });
     </script>
-@push('scripts')
+    @push('scripts')

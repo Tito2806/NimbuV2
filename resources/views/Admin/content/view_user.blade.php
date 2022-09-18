@@ -161,7 +161,10 @@
                     },
                     {
                         data: 'image',
-                        name: 'image'
+                        name: 'image',
+                        "render": function(data) {
+                            return '<img src="../../../../images/usuario/'+data+'" width="70px">';
+                        }
                     },
                     {
                         data: 'action',
